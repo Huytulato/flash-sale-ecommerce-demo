@@ -12,12 +12,10 @@ const apiClient = axios.create({
 });
 
 export const flashSaleApi = {
-    // Mock Data
+    // Gọi xuống backend để lấy danh sách sản phẩm 
     getProducts: async (): Promise<Product[]> => {
-        return [
-            { id: 1, name: "Iphone 15 Pro Max 256GB", originalPrice: 30000000, salePrice: 15000000, stock: 5 },
-            { id: 2, name: "MacBook Air M2", originalPrice: 25000000, salePrice: 12500000, stock: 2 }
-        ];
+        const response = await apiClient.get<Product[]>('/flash-sale/products');
+        return response.data;
     },
     
     placeOrder: async (data: OrderRequest): Promise<OrderResponse> => {
