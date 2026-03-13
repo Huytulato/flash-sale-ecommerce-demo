@@ -18,20 +18,20 @@ Database & Cache:
 ## Project Structure
 
 flash-sale-ecommerce-demo
- ├── backend
- ├── frontend
- └── docs
+- backend
+- frontend
+- docs
 
 ## Start Database & Redis
 docker-compose up -d
 
 ## Run Backend
 
-cd backend
-mvn spring-boot:run
+- cd backend
+- mvn spring-boot:run
 
 ## Run Frontend
 
-cd frontend
-npm install
-npm run dev
+- cd frontend
+- npm install
+- npm run dev 

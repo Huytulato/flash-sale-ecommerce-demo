@@ -32,7 +32,7 @@ const FlashSale = () => {
             
             setMessages(prev => ({ 
                 ...prev, 
-                [productId]: { text: `✅ ${response.message}`, isError: false } 
+                [productId]: { text: `${response.message}`, isError: false } 
             }));
             
             // Cập nhật lại số lượng tồn kho trên UI ngay lập tức
@@ -47,7 +47,7 @@ const FlashSale = () => {
             const errorMsg = error.response?.data?.error || 'Lỗi hệ thống hoặc kết nối!';
             setMessages(prev => ({ 
                 ...prev, 
-                [productId]: { text: `❌ ${errorMsg}`, isError: true } 
+                [productId]: { text: `${errorMsg}`, isError: true } 
             }));
         } finally {
             setLoadingId(null);
