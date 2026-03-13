@@ -11,6 +11,10 @@ Backend
 Frontend
 - React
 
+Database & Cache: 
+- PostgreSQL
+- Redis
+
 ## Project Structure
 
 flash-sale-ecommerce-demo
@@ -18,13 +22,16 @@ flash-sale-ecommerce-demo
  ├── frontend
  └── docs
 
+## Start Database & Redis
+docker-compose up -d
+
 ## Run Backend
 
 cd backend
-./mvnw spring-boot:run
+mvn spring-boot:run
 
 ## Run Frontend
 
 cd frontend
 npm install
-npm start
+npm run dev
