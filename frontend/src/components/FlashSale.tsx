@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import type { Product } from '../types/flashsale';
+import axios from 'axios';
+import type { ErrorResponse, Product } from '../types/flashsale';
 import { flashSaleApi } from '../services/api';
 
 const FlashSale = () => {
@@ -42,12 +43,14 @@ const FlashSale = () => {
                 )
             );
 
-        } catch (error: any) {
+        } catch (error: unknown) {
             // Lấy câu báo lỗi từ Backend Spring Boot gửi lên
-            const errorMsg = error.response?.data?.error || 'Lỗi hệ thống hoặc kết nối!';
+            const errorMsg = axios.isAxiosError<ErrorResponse>(error)
+                ? (error.response?.data?.error ?? 'Lỗi hệ thống hoặc kết nối!')
+                : 'Lỗi hệ thống hoặc kết nối!';
             setMessages(prev => ({ 
                 ...prev, 
-                [productId]: { text: `${errorMsg}`, isError: true } 
+                [productId]: { text: errorMsg, isError: true } 
             }));
         } finally {
             setLoadingId(null);
